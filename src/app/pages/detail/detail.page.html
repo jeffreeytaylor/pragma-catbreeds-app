@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ breed?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="image-container">
+  <img
+    *ngIf="breed?.reference_image_id"
+    [src]="'https://cdn2.thecatapi.com/images/' + breed.reference_image_id + '.jpg'"
+    alt="Cat image"
+  />
+</div>
+
+<ion-content class="content-scroll">
+
+  <div class="info">
+    <p><strong>Origin:</strong> {{ breed?.origin }}</p>
+    <p><strong>Intelligence:</strong> {{ breed?.intelligence }}</p>
+    <p><strong>Adaptability:</strong> {{ breed?.adaptability }}</p>
+
+    <p class="description">{{ breed?.description }}</p>
+  </div>
+
+</ion-content>
