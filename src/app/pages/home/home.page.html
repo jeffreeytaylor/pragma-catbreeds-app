@@ -7,24 +7,39 @@
 <ion-content>
 
   <ion-searchbar
+    class="custom-searchbar"
     placeholder="Search breed"
     (ionInput)="onSearch($event)">
   </ion-searchbar>
 
   <ion-spinner *ngIf="isLoading" class="spinner-center"></ion-spinner>
 
-  <ion-list *ngIf="!isLoading">
-    <ion-card *ngFor="let breed of filteredBreeds" (click)="goToDetail(breed)" button>
-      <ion-card-header>
-        <ion-card-title>{{ breed.name }}</ion-card-title>
-        <ion-card-subtitle>{{ breed.origin }}</ion-card-subtitle>
-      </ion-card-header>
+  <div class="card-list" *ngIf="!isLoading">
+    <div
+      class="breed-card"
+      *ngFor="let breed of filteredBreeds"
+      (click)="goToDetail(breed)"
+    >
+      <!-- Imagen -->
+      <div class="image-wrapper">
+        <img
+          *ngIf="breed.reference_image_id"
+          [src]="'https://cdn2.thecatapi.com/images/' + breed.reference_image_id + '.jpg'"
+          alt="Cat"
+        />
+      </div>
 
-      <ion-card-content>
-        <p><strong>Intelligence:</strong> {{ breed.intelligence }}</p>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+      <!-- Info -->
+      <div class="card-info">
+        <h2>{{ breed.name }}</h2>
+        <p class="origin">{{ breed.origin }}</p>
+
+        <div class="stats">
+          <span class="chip">🧠 {{ breed.intelligence }}</span>
+          <span class="chip">⭐ {{ breed.adaptability }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </ion-content>
-

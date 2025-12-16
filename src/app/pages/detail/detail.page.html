@@ -3,10 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ breed?.name }}</ion-title>
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Imagen fija -->
 <div class="image-container">
   <img
     *ngIf="breed?.reference_image_id"
@@ -15,14 +16,29 @@
   />
 </div>
 
-<ion-content class="content-scroll">
+<!-- Contenido con scroll -->
+<ion-content class="info-content">
 
-  <div class="info">
-    <p><strong>Origin:</strong> {{ breed?.origin }}</p>
-    <p><strong>Intelligence:</strong> {{ breed?.intelligence }}</p>
-    <p><strong>Adaptability:</strong> {{ breed?.adaptability }}</p>
+  <div class="info-card">
+    <h2 class="breed-name">{{ breed?.name }}</h2>
 
-    <p class="description">{{ breed?.description }}</p>
+    <p class="origin">
+      📍 <span>{{ breed?.origin }}</span>
+    </p>
+
+    <div class="attributes">
+      <div class="chip">
+        🧠 <strong>Intelligence:</strong> {{ breed?.intelligence }}
+      </div>
+      <div class="chip">
+        ⭐ <strong>Adaptability:</strong> {{ breed?.adaptability }}
+      </div>
+    </div>
+
+    <div class="description">
+      <h3>Description</h3>
+      <p>{{ breed?.description }}</p>
+    </div>
   </div>
 
 </ion-content>
